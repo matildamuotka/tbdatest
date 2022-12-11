@@ -5,6 +5,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pytz
+from matplotlib import pyplot as plt
 from sqlalchemy import create_engine #to access a sql database
 
 
