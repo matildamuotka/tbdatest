@@ -78,7 +78,5 @@ def op_period(list_575):
             nw_values.append(0)
             counter = counter+1
         nw_dates.append(dtes[i])
-    plt.plot(nw_dates,nw_values)
+    st.plotly_chart(nw_dates,nw_values, use_container_width=True)
     print("This is how many times the machine was run during your chosen day:", counter)
-
-st.plotly_chart(running, use_container_width=True)
