@@ -1,5 +1,5 @@
-pip install nose
-pip install tornado
+sudo easy_install nose
+sudo easy_install tornado
 pip install matplotlib
 pip install streamlit
 pip install sqlalchemy
