@@ -50,17 +50,17 @@ st.text("Operating periods for chosen time window")
 #st.bar_chart(counters_collected)
 
 # Create the data for the Gantt chart
-tasks = {'Task 1': {'start': '2022-12-12', 'finish': '2022-12-14'},
-         'Task 2': {'start': '2022-12-12', 'finish': '2022-12-16'},
-         'Task 3': {'start': '2022-12-17', 'finish': '2022-12-19'}}
+#tasks = {'Task 1': {'start': '2022-12-12', 'finish': '2022-12-14'},
+     #    'Task 2': {'start': '2022-12-12', 'finish': '2022-12-16'},
+      #   'Task 3': {'start': '2022-12-17', 'finish': '2022-12-19'}}
 
 # Create the Gantt chart
-fig = go.Figure(go.Gantt(
-    tasks=tasks,
-    show_colorbar=True,
-    bar_width=0.5,
-    showgrid_x=True,
-    showgrid_y=True))
+#fig = go.Figure(go.Gantt(
+  #  tasks=tasks,
+ #   show_colorbar=True,
+  #  bar_width=0.5,
+   # showgrid_x=True,
+  #  showgrid_y=True))
 
 # Display the chart
 st.plotly_chart(fig)
