@@ -4,10 +4,8 @@ from datetime import datetime,date,time,timezone,timedelta
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pytz
 from matplotlib import pyplot as plt
 from sqlalchemy import create_engine #to access a sql database
-
 
 # pd.read_csv(r"G:\My Drive\Madrid\COURS\TBDA\TBDATEAM\data.csv")
 # uploaded_file = st.file_uploader("Fill out the project plan template and upload your file here. After you upload the file, you can edit your project plan within the app.", type=['csv'])
