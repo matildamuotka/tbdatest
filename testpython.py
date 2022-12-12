@@ -56,6 +56,8 @@ fig = px.timeline(df, x_start="Start", x_end="Finish", y="Task")
 fig.update_yaxes(autorange="reversed") # otherwise tasks are listed from the bottom up
 st.plotly_chart(fig, use_container_width=True)
 
+st.title("GANTT Chart")
+
 st.markdown('''
     This is a GANTT chart informing about periods of *automatic/manual* operations''')
     
@@ -64,7 +66,7 @@ st.markdown('''
                         df, 
                         x_start="Start", 
                         x_end="End", 
-                        y="Mode",
+                        y="On/Off",
                         color="Mode",
                         hover_name="Mode"
                         )
