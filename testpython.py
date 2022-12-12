@@ -63,7 +63,7 @@ st.text("Operating periods for chosen time window")
   #  showgrid_y=True))
 
 # Display the chart
-st.plotly_chart(fig)
+#st.plotly_chart(fig)
 
 df = pd.DataFrame([
     dict(Task="Job A", Start='2009-01-01', Finish='2009-02-28'),
