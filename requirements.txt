@@ -1,0 +1,3 @@
+pip install matplotlib.pyplot as plt 
+pip install streamlit
+pip install sqlalchemy
