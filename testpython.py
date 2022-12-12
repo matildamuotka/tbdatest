@@ -24,8 +24,8 @@ st.title("Histogram per operating mode")
 #end_date = st.date_input("End date",date(2020,12,28),date(2020,12,28),date(2022,2,23))
 #end_time = st.time_input("End time",time(22,00,00))
 
-start_datetime = datetime.combine((2020,12,28),(6,00,00),tzinfo=timezone(timedelta(seconds=3600)))
-end_datetime = datetime.combine((2022,2,23),(22,00,00),tzinfo=timezone(timedelta(seconds=3600)))
+start_datetime = datetime.combine((2020,12,28),(6,0,0),tzinfo=timezone(timedelta(seconds=3600)))
+end_datetime = datetime.combine((2022,2,23),(22,0,0),tzinfo=timezone(timedelta(seconds=3600)))
 
 #Number of minutes in the interval
 time_interval = end_datetime - start_datetime
