@@ -63,8 +63,8 @@ values = MACHINE_IN_OPERATION["value"]
 
 def op_period(list_575):
     counter = 0
-    dtes = list_597['dateh']
-    vlues = list_597['value']
+    dtes = list_575['dateh']
+    vlues = list_575['value']
     nw_dates = []
     nw_values = []
     for i in range(len(vlues)):
@@ -79,4 +79,3 @@ def op_period(list_575):
             counter = counter+1
         nw_dates.append(dtes[i])
     st.plotly_chart(nw_dates,nw_values, use_container_width=True)
-    print("This is how many times the machine was run during your chosen day:", counter)
