@@ -75,4 +75,4 @@ for i in range(len(values)):
         new_values.append(0)
     new_dates.append(dates[i])
 
-plt.plot(new_dates,new_values)
+st.plot(new_dates,new_values)
