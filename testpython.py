@@ -70,7 +70,7 @@ for i in range(len(values)):
         new_values.append(0)
         new_dates.append(dates[i])
         new_values.append(1)
-        running = running.append[i]
+        running.append[i]
     elif (values[i] == 0.0): # If the value is 0, we put a 1 a the same time exactly to have a square chart
         new_values.append(1)
         new_dates.append(dates[i])
