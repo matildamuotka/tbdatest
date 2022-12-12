@@ -44,4 +44,4 @@ for mode in modes:
     counters_per_min.append(op_collected/time_interval_min)
 
 st.text("Operating periods for chosen time window")
-st.gantt_chart(counters_collected)
+st.bar_chart(counters_collected)
