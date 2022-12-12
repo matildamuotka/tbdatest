@@ -51,7 +51,7 @@ for mode in modes:
     
     ################
 
-    pd.read_csv('/Users/matildamuotka/Documents/onoffcsv.csv')
+pd.read_csv(r'C:\Users\chlox\Documents\stream\C__Users_chlox_Documents_stream.csv')
 uploaded_file = st.file_uploader("Fill out the project plan template and upload your file here. After you upload the file, you can edit your project plan within the app.", type=['csv'])
 
 
@@ -69,21 +69,20 @@ if uploaded_file is not None:
         )
 
     updated = grid_response['data']
-    df = pd.DataFrame(updated)
+    df = pd.DataFrame(updated) 
+    
 
-st.text("Operating periods for chosen time window")
+    st.title("GANTT Chart")
 
-st.title("GANTT Chart")
-
-st.markdown('''
-    This is a GANTT chart informing about periods of *on/off* operations''')
-
-if st.button('Generate Gantt Chart'): 
+    st.markdown('''
+    This is a GANTT chart informing about periods of *automatic/manual* operations''')
+    
+    if st.button('Generate Gantt Chart'): 
         fig = px.timeline(
                         df, 
                         x_start="Start", 
                         x_end="End", 
-                        y="On/Off",
+                        y="Mode",
                         color="Mode",
                         hover_name="Mode"
                         )
@@ -114,3 +113,19 @@ if st.button('Generate Gantt Chart'):
         fig.update_xaxes(tickangle=0, tickfont=dict(family='Rockwell', color='blue', size=15))
 
         st.plotly_chart(fig, use_container_width=True)  #Display the plotly chart in Streamlit
+
+        st.subheader('Bonus: Export the interactive Gantt chart to HTML and share with others!') #Allow users to export the Plotly chart to HTML
+        buffer = io.StringIO()
+        fig.write_html(buffer, include_plotlyjs='cdn')
+        html_bytes = buffer.getvalue().encode()
+        st.download_button(
+            label='Export to HTML',
+            data=html_bytes,
+            file_name='Gantt.html',
+            mime='text/html'
+        ) 
+    else:
+        st.write('---') 
+   
+else:
+    st.warning('You need to upload a csv file.')
