@@ -48,7 +48,7 @@ for mode in modes:
     
     ################
 
-    pd.read_csv(r'C:\Users\matildamuotka\Documents\onoffcsv.csv')
+    pd.read_csv('/Users/matildamuotka/Documents/onoffcsv.csv')
 uploaded_file = st.file_uploader("Fill out the project plan template and upload your file here. After you upload the file, you can edit your project plan within the app.", type=['csv'])
 
 
