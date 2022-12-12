@@ -18,14 +18,14 @@ modes = [query(x) for x in op_modes]
 
 st.title("Histogram per operating mode")
 
-# Choice of the time window
-start_date = st.date_input("Start date",date(2020,12,28),date(2020,12,28),date(2022,2,23))
-start_time = st.time_input("Start time",time(6,00,00))
-end_date = st.date_input("End date",date(2020,12,28),date(2020,12,28),date(2022,2,23))
-end_time = st.time_input("End time",time(22,00,00))
+# Our choice of the time window
+#start_date = st.date_input("Start date",date(2020,12,28),date(2020,12,28),date(2022,2,23))
+#start_time = st.time_input("Start time",time(6,00,00))
+#end_date = st.date_input("End date",date(2020,12,28),date(2020,12,28),date(2022,2,23))
+#end_time = st.time_input("End time",time(22,00,00))
 
-start_datetime = datetime.combine(start_date,start_time,tzinfo=timezone(timedelta(seconds=3600)))
-end_datetime = datetime.combine(end_date,end_time,tzinfo=timezone(timedelta(seconds=3600)))
+start_datetime = datetime.combine((2020,12,28),(6,00,00),tzinfo=timezone(timedelta(seconds=3600)))
+end_datetime = datetime.combine((2022,2,23),(22,00,00),tzinfo=timezone(timedelta(seconds=3600)))
 
 #Number of minutes in the interval
 time_interval = end_datetime - start_datetime
