@@ -49,7 +49,7 @@ for mode in modes:
 st.text("Operating periods for chosen time window")
 
 df = pd.DataFrame([
-    dict(Task="Operating, on/off", "Start"=start_datetime, "Finish"=end_datetime),
+    dict(Task="Operating, on/off", Start=start_datetime, Finish=end_datetime),
 ])
 
 fig = px.timeline(df, x_start="Start", x_end="Finish", y="Task")
