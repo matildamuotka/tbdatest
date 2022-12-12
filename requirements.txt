@@ -7,4 +7,3 @@ SQLAlchemy==1.4.44
 sqlparse==0.4.3
 streamlit==1.11.0
 streamlit-aggrid==0.3.3
-plotly==5.11.0
