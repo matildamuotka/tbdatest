@@ -9,4 +9,3 @@ streamlit==1.11.0
 streamlit-aggrid==0.3.3
 plotly==5.11.0
 plotly.graph_objects==5.11.0
-
