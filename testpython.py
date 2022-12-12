@@ -61,23 +61,24 @@ MACHINE_IN_OPERATION = pd.read_sql_query("select id_var, date, to_timestamp(@dat
 dates = MACHINE_IN_OPERATION["dateh"]
 values = MACHINE_IN_OPERATION["value"]
 
-new_dates = []
-new_values = []
-running = []
-
-for i in range(len(values)):
-    if (values[i] == 255.0): # If the value is 255, we put a 0 a the same time exactly to have a square chart
-        new_values.append(0)
-        running.append(0)
-        new_dates.append(dates[i])
-        new_values.append(1)
-        running.append(1)
-    elif (values[i] == 0.0): # If the value is 0, we put a 1 a the same time exactly to have a square chart
-        new_values.append(1)
-        running.append(1)
-        new_dates.append(dates[i])
-        new_values.append(0)
-        running.append(0)
-    new_dates.append(dates[i])
+def op_period(list_575):
+    counter = 0
+    dtes = list_597['dateh']
+    vlues = list_597['value']
+    nw_dates = []
+    nw_values = []
+    for i in range(len(vlues)):
+        if (vlues[i] == 255.0): # If the value is 255, we put a 0 a the same time exactly to have a square chart
+            nw_values.append(0)
+            nw_dates.append(dtes[i])
+            nw_values.append(1)
+        elif (vlues[i] == 0.0): # If the value is 0, we put a 1 a the same time exactly to have a square chart
+            nw_values.append(1)
+            nw_dates.append(dtes[i])
+            nw_values.append(0)
+            counter = counter+1
+        nw_dates.append(dtes[i])
+    plt.plot(nw_dates,nw_values)
+    print("This is how many times the machine was run during your chosen day:", counter)
 
 st.plotly_chart(running, use_container_width=True)
