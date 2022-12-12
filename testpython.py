@@ -45,21 +45,35 @@ for mode in modes:
     op_collected = mode[mode['dateh'] > start_datetime][mode['dateh'] < end_datetime]['dateh'].size
     counters_collected.append(op_collected)
     counters_per_min.append(op_collected/time_interval_min)
+    
+    ################
+
+    pd.read_csv(r'C:\Users\matildamuotka\Documents\onoffcsv.csv')
+uploaded_file = st.file_uploader("Fill out the project plan template and upload your file here. After you upload the file, you can edit your project plan within the app.", type=['csv'])
+
+
+
+if uploaded_file is not None:
+    Tasks=pd.read_csv(uploaded_file)
+    Tasks['Start'] = Tasks['Start'].astype('datetime64')
+    Tasks['End'] = Tasks['End'].astype('datetime64')
+    
+    grid_response = AgGrid(
+        Tasks,
+        editable=True, 
+        height=300, 
+        width='100%',
+        )
+
+    updated = grid_response['data']
+    df = pd.DataFrame(updated)
 
 st.text("Operating periods for chosen time window")
-
-df = pd.DataFrame([
-    dict(Task="Operating, on/off", Start=start_datetime, Finish=end_datetime),
-])
-
-fig = px.timeline(df, x_start="Start", x_end="Finish", y="Task")
-fig.update_yaxes(autorange="reversed") # otherwise tasks are listed from the bottom up
-st.plotly_chart(fig, use_container_width=True)
 
 st.title("GANTT Chart")
 
 st.markdown('''
-    This is a GANTT chart informing about periods of *automatic/manual* operations''')
+    This is a GANTT chart informing about periods of *on/off* operations''')
 
 if st.button('Generate Gantt Chart'): 
         fig = px.timeline(
