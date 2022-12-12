@@ -2,7 +2,7 @@ from datetime import datetime,date,time,timezone,timedelta
 import streamlit as st
 import pandas as pd
 import numpy as np
-import ploty.graph_objects as go
+import plotly.graph_objects as go
 from matplotlib import pyplot as plt
 from sqlalchemy import create_engine #to access a sql database
 
