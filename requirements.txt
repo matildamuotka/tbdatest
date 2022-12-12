@@ -1,5 +1,9 @@
-pip install -r requirements.txt
-pip install matplotlib
-pip install streamlit
-pip install sqlalchemy
-pip install psycopg2
+matplotlib==3.6.2
+matplotlib-inline==0.1.6
+numpy==1.23.5
+pandas==1.5.2
+psycopg2-binary==2.9.5
+SQLAlchemy==1.4.44
+sqlparse==0.4.3
+streamlit==1.11.0
+streamlit-aggrid==0.3.3
