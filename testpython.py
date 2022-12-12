@@ -56,26 +56,42 @@ fig = px.timeline(df, x_start="Start", x_end="Finish", y="Task")
 fig.update_yaxes(autorange="reversed") # otherwise tasks are listed from the bottom up
 st.plotly_chart(fig, use_container_width=True)
 
-MACHINE_IN_OPERATION = pd.read_sql_query("select id_var, date, to_timestamp(@date/1000) as dateH, value from variable_log_float where id_var = 575 limit 200", con=engine)
+st.markdown('''
+    This is a GANTT chart informing about periods of *automatic/manual* operations''')
+    
+    if st.button('Generate Gantt Chart'): 
+        fig = px.timeline(
+                        df, 
+                        x_start="Start", 
+                        x_end="End", 
+                        y="Mode",
+                        color="Mode",
+                        hover_name="Mode"
+                        )
 
-dates = MACHINE_IN_OPERATION["dateh"]
-values = MACHINE_IN_OPERATION["value"]
+        fig.update_yaxes(autorange="reversed")          #if not specified as 'reversed', the tasks will be listed from bottom up       
+        
+        fig.update_layout(
+                        title='Project Plan Gantt Chart',
+                        hoverlabel_bgcolor='#DAEEED',   #Change the hover tooltip background color to a universal light blue color. If not specified, the background color will vary by team or completion pct, depending on what view the user chooses
+                        bargap=0.2,
+                        height=600,              
+                        xaxis_title="", 
+                        yaxis_title="",                   
+                        title_x=0.5,                    #Make title centered                     
+                        xaxis=dict(
+                                tickfont_size=15,
+                                tickangle = 270,
+                                rangeslider_visible=True,
+                                side ="top",            #Place the tick labels on the top of the chart
+                                showgrid = True,
+                                zeroline = True,
+                                showline = True,
+                                showticklabels = True,
+                                tickformat="%x\n",      #Display the tick labels in certain format. To learn more about different formats, visit: https://github.com/d3/d3-format/blob/main/README.md#locale_format
+                                )
+                    )
+        
+        fig.update_xaxes(tickangle=0, tickfont=dict(family='Rockwell', color='blue', size=15))
 
-def op_period(list_575):
-    counter = 0
-    dtes = list_575['dateh']
-    vlues = list_575['value']
-    nw_dates = []
-    nw_values = []
-    for i in range(len(vlues)):
-        if (vlues[i] == 255.0): # If the value is 255, we put a 0 a the same time exactly to have a square chart
-            nw_values.append(0)
-            nw_dates.append(dtes[i])
-            nw_values.append(1)
-        elif (vlues[i] == 0.0): # If the value is 0, we put a 1 a the same time exactly to have a square chart
-            nw_values.append(1)
-            nw_dates.append(dtes[i])
-            nw_values.append(0)
-            counter = counter+1
-        nw_dates.append(dtes[i])
-    st.plotly_chart(nw_dates,nw_values, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True)  #Display the plotly chart in Streamlit
