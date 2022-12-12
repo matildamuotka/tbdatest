@@ -60,8 +60,8 @@ st.title("GANTT Chart")
 
 st.markdown('''
     This is a GANTT chart informing about periods of *automatic/manual* operations''')
-    
-    if st.button('Generate Gantt Chart'): 
+
+if st.button('Generate Gantt Chart'): 
         fig = px.timeline(
                         df, 
                         x_start="Start", 
