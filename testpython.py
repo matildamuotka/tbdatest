@@ -56,7 +56,7 @@ fig = px.timeline(df, x_start="Start", x_end="Finish", y="Task")
 fig.update_yaxes(autorange="reversed") # otherwise tasks are listed from the bottom up
 st.plotly_chart(fig, use_container_width=True)
 
-MACHINE_IN_OPERATION = pd.read_sql_query("select id_var, date, to_timestamp(@date/1000) as dateH, value from variable_log_float where id_var = 597 limit 200", con=engine)
+MACHINE_IN_OPERATION = pd.read_sql_query("select id_var, date, to_timestamp(@date/1000) as dateH, value from variable_log_float where id_var = 575 limit 200", con=engine)
 
 dates = MACHINE_IN_OPERATION["dateh"]
 values = MACHINE_IN_OPERATION["value"]
