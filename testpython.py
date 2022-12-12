@@ -43,8 +43,5 @@ for mode in modes:
     counters_collected.append(op_collected)
     counters_per_min.append(op_collected/time_interval_min)
 
-st.text("Collected operations by operating mode")
-st.bar_chart(counters_collected)
-
-st.text("Collected operations per minute by operating mode")
-st.bar_chart(counters_per_min)
+st.text("Operating periods for chosen time window")
+st.gantt_chart(counters_collected)
